@@ -8,7 +8,7 @@ class MyRegister extends StatefulWidget {
 }
 class _MyRegisterState extends State<MyRegister> {
   bool value = false;  
-  int _value = 0; //nitially no radio button will be selected
+  int _value = 0; //initially no radio button will be selected
 
 
   @override
