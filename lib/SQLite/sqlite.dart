@@ -69,6 +69,13 @@ class DatabaseHelper {
     return db.insert('Student', user.toMap());
   }
 
+// get student name
+  Future<List<Student>> getStudent() async {
+    final Database db = await initDB();
+    List<Map<String, Object?>> result = await db.query('Student');
+    return result.map((e) => Student.fromMap(e)).toList();
+  }
+
   //Search Method
   Future<List<NoteModel>> searchNotes(String keyword) async {
     final Database db = await initDB();

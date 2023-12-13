@@ -164,14 +164,20 @@ class _LoginScreenState extends State<LoginScreen> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                         color: Color.fromARGB(255, 129, 96, 139)),
-                    child: TextButton(
+                    child: ElevatedButton(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
                             //Login method will be here
                             loginS();
-
-                            //Now we have a response from our sqlite method
-                            //We are going to create a user
+                            // Navigator for next page.
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  // Builder for the nextpage
+                                  // class's constructor.
+                                  builder: (context) => studentinterface(
+                                        name: username.text,
+                                      )),
+                            );
                           }
                         },
                         child: const Text(

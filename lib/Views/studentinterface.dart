@@ -5,8 +5,10 @@ import 'package:sqlite_flutter_crud/Views/Add_Pictures.dart';
 import 'package:sqlite_flutter_crud/Views/notes.dart';
 import 'package:sqlite_flutter_crud/Views/student_details.dart';
 
+// ignore: must_be_immutable
 class studentinterface extends StatefulWidget {
-  const studentinterface({super.key});
+  String name;
+  studentinterface({required this.name, Key? key});
   @override
   State<studentinterface> createState() => _studentinterfaceState();
 }
@@ -37,42 +39,59 @@ class _studentinterfaceState extends State<studentinterface> {
           MaterialPageRoute(builder: (context) => const Details()),
         );
         break;
-      case 3:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const LoginScreen()),
-        );
-        break;
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController _name = TextEditingController(text: name);
     return Scaffold(
       appBar: AppBar(
-        title: const TextField(
-          decoration: InputDecoration(
-            hintText: "Search",
-            border: InputBorder.none,
+        backgroundColor: Color.fromARGB(255, 129, 96, 139),
+        title: const Text(
+          '            S t u d e n t I n t e r f a c e',
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.w600,
+            color: Color.fromARGB(255, 220, 188, 230),
           ),
-          textAlign: TextAlign.center,
         ),
-        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginScreen()),
+              );
+            },
+          ),
+        ],
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
+          const Align(
+            child: Text(
+              "Hi,  ",
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.w600,
+                color: Color.fromARGB(255, 129, 96, 139),
+              ),
+            ),
+          ),
           // Rectangle block containers
           Container(
-            width: 150,
-            height: MediaQuery.of(context).size.height * 0.1,
+            width: MediaQuery.of(context).size.width * 0.9,
+            height: MediaQuery.of(context).size.height * 0.3,
             // Remove one of the named arguments for the 'width' parameter
-            color: Color.fromARGB(255, 129, 96, 139).withOpacity(.4),
+            color: Color.fromARGB(255, 129, 96, 139).withOpacity((0.4)),
           ),
           Container(
-            width: 250,
+            width: MediaQuery.of(context).size.width * 0.9,
             height: MediaQuery.of(context).size.height * 0.3,
-            color: Color.fromARGB(255, 129, 96, 139).withOpacity(.4),
+            color: Color.fromARGB(255, 129, 96, 139).withOpacity((0.4)),
           ),
           // Navigation bar
           BottomNavigationBar(
@@ -80,7 +99,7 @@ class _studentinterfaceState extends State<studentinterface> {
             onTap: _onItemTapped,
             items: const [
               BottomNavigationBarItem(
-                  icon: Icon(Icons.image), label: 'Add Pictures'),
+                  icon: Icon(Icons.browse_gallery), label: 'Add Picture'),
               BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Notes'),
               BottomNavigationBarItem(
                   icon: Icon(Icons.person), label: 'Your Info'),
