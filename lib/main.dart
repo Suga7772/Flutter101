@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // it goes to login screen first
-      home: const studentinterface(),
+      home: const LoginScreen(),
     );
   }
 }

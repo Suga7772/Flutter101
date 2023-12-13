@@ -44,7 +44,6 @@ class _studentinterfaceState extends State<studentinterface> {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController _name = TextEditingController(text: name);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 129, 96, 139),
@@ -68,44 +67,44 @@ class _studentinterfaceState extends State<studentinterface> {
           ),
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          const Align(
-            child: Text(
-              "Hi,  ",
+      body: Container(
+        color: Color.fromARGB(255, 129, 96, 139),
+        child: Center(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Text(
+              "Greetings! ",
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.w600,
                 color: Color.fromARGB(255, 129, 96, 139),
               ),
             ),
-          ),
-          // Rectangle block containers
-          Container(
-            width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.height * 0.3,
-            // Remove one of the named arguments for the 'width' parameter
-            color: Color.fromARGB(255, 129, 96, 139).withOpacity((0.4)),
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.height * 0.3,
-            color: Color.fromARGB(255, 129, 96, 139).withOpacity((0.4)),
-          ),
-          // Navigation bar
-          BottomNavigationBar(
-            currentIndex: _selectedIndex,
-            onTap: _onItemTapped,
-            items: const [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.browse_gallery), label: 'Add Picture'),
-              BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Notes'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.person), label: 'Your Info'),
-            ],
-          ),
-        ],
+            // Rectangle block containers
+            Container(
+              width: MediaQuery.of(context).size.width * 0.9,
+              height: MediaQuery.of(context).size.height * 0.3,
+              // Remove one of the named arguments for the 'width' parameter
+              color: Color.fromARGB(255, 129, 96, 139).withOpacity((0.4)),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.9,
+              height: MediaQuery.of(context).size.height * 0.3,
+              color: Color.fromARGB(255, 129, 96, 139).withOpacity((0.4)),
+            ),
+            // Navigation bar
+            BottomNavigationBar(
+              currentIndex: _selectedIndex,
+              onTap: _onItemTapped,
+              items: const [
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.browse_gallery), label: 'Add Picture'),
+                BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Notes'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.person), label: 'Your Info'),
+              ],
+            ),
+          ]),
+        ),
       ),
     );
   }

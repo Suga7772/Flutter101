@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:sqlite_flutter_crud/Authtentication/dummy.dart';
 import 'package:sqlite_flutter_crud/Authtentication/loginteacher.dart';
 import 'package:sqlite_flutter_crud/Authtentication/signup.dart';
 import 'package:sqlite_flutter_crud/JsonModels/users.dart';
 import 'package:sqlite_flutter_crud/SQLite/sqlite.dart';
+import 'package:sqlite_flutter_crud/Views/student.dart';
 import 'package:sqlite_flutter_crud/Views/studentinterface.dart';
+import 'package:sqlite_flutter_crud/Views/studentpage.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   //We need two text editing controller
 
   //TextEditing controller to control the text when we enter into it
-  final username = TextEditingController();
+  var username = TextEditingController();
   final password = TextEditingController();
   final useremail = TextEditingController();
 
@@ -36,10 +39,16 @@ class _LoginScreenState extends State<LoginScreen> {
       //If login is correct, then goto notes
       if (!mounted) return;
       Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  const studentinterface())); // go to student interface
+        context,
+        MaterialPageRoute(
+          // Builder for the nextpage
+          // class's constructor.
+          builder: (context) => studentPage(
+            name: username.text.toString(),
+          ),
+        ),
+      );
+      // go to student interface
     } else {
       //If not, true the bool value to show error message
       setState(() {
@@ -102,8 +111,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
-                        color:
-                            Color.fromARGB(255, 129, 96, 139).withOpacity(.2)),
+                        color: const Color.fromARGB(255, 129, 96, 139)
+                            .withOpacity(.2)),
                     child: TextFormField(
                       controller: username,
                       validator: (value) {
@@ -127,8 +136,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
-                        color:
-                            Color.fromARGB(255, 129, 96, 139).withOpacity(.2)),
+                        color: const Color.fromARGB(255, 129, 96, 139)
+                            .withOpacity(.2)),
                     child: TextFormField(
                       controller: password,
                       validator: (value) {
@@ -163,21 +172,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: MediaQuery.of(context).size.width * .9,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
-                        color: Color.fromARGB(255, 129, 96, 139)),
-                    child: ElevatedButton(
+                        color: const Color.fromARGB(255, 129, 96, 139)),
+                    child: TextButton(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
                             //Login method will be here
                             loginS();
-                            // Navigator for next page.
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  // Builder for the nextpage
-                                  // class's constructor.
-                                  builder: (context) => studentinterface(
-                                        name: username.text,
-                                      )),
-                            );
+
+                            //Now we have a response from our sqlite method
+                            //We are going to recheck for student
                           }
                         },
                         child: const Text(
