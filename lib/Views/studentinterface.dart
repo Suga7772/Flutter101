@@ -72,11 +72,10 @@ class _studentinterfaceState extends State<studentinterface> {
         child: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Text(
-              "Greetings! ",
+              "Welcome ${widget.name}!",
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.w600,
-                color: Color.fromARGB(255, 129, 96, 139),
               ),
             ),
             // Rectangle block containers

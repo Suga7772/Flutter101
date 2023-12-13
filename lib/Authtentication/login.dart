@@ -4,7 +4,6 @@ import 'package:sqlite_flutter_crud/Authtentication/loginteacher.dart';
 import 'package:sqlite_flutter_crud/Authtentication/signup.dart';
 import 'package:sqlite_flutter_crud/JsonModels/users.dart';
 import 'package:sqlite_flutter_crud/SQLite/sqlite.dart';
-import 'package:sqlite_flutter_crud/Views/student.dart';
 import 'package:sqlite_flutter_crud/Views/studentinterface.dart';
 import 'package:sqlite_flutter_crud/Views/studentpage.dart';
 
@@ -43,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
         MaterialPageRoute(
           // Builder for the nextpage
           // class's constructor.
-          builder: (context) => studentPage(
+          builder: (context) => studentinterface(
             name: username.text.toString(),
           ),
         ),
